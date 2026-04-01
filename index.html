@@ -58,7 +58,7 @@
       }]
     }]</script>
     
-    <!-- Fonts & Icons (Switched to Clean/Simple Inter Font) -->
+    <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Great+Vibes&display=swap" rel="stylesheet">
@@ -75,7 +75,7 @@
                 extend: {
                     fontFamily: {
                         sans:['"Inter"', 'sans-serif'],
-                        syne:['"Inter"', 'sans-serif'], // Simplified to Inter everywhere
+                        syne:['"Inter"', 'sans-serif'],
                     },
                     colors: {
                         blue: { 50: '#eff6ff', 100: '#dbeafe', 500: '#3b82f6', 600: '#2563eb' }
@@ -106,11 +106,12 @@
         .btn-premium:hover::before { transform: translateX(100%); }
         .btn-premium:hover { box-shadow: 0 15px 35px rgba(37, 99, 235, 0.4); transform: translateY(-2px); }
         
-        /* Modals and Display Classes */
+        /* Modals and Display Classes - Updated to fix Nav Menu layout breakage */
         .hidden-el { display: none !important; opacity: 0; pointer-events: none; }
         .visible-el { display: block !important; opacity: 1; pointer-events: auto; }
+        .visible-flex { display: flex !important; opacity: 1; pointer-events: auto; } /* Fix added for Navbar dropdown */
         
-        /* Smooth Vanilla Animations (Replaces Framer Motion) */
+        /* Smooth Vanilla Animations */
         .reveal-element { opacity: 0; transform: translateY(30px) scale(0.98); transition: opacity 0.8s ease, transform 0.8s ease; }
         .reveal-element.is-visible { opacity: 1; transform: translateY(0) scale(1); }
         
@@ -146,8 +147,8 @@
                 </div>
             </div>
             
-            <!-- Desktop Links -->
-            <div class="hidden lg:flex gap-10 text-[11px] font-bold uppercase tracking-[0.2em] items-center">
+            <!-- Desktop Links - Reduced gap on medium screens to keep it firmly on the side without wrapping -->
+            <div class="hidden lg:flex gap-5 xl:gap-10 text-[11px] font-bold uppercase tracking-[0.2em] items-center">
                 <div id="live-time" class="text-neutral-500 font-mono text-[9px] mr-4 hidden xl:block border border-white/5 px-3 py-1 rounded-md bg-white/5 w-[100px] text-center tabular-nums">
                     --:--:--
                 </div>
@@ -156,7 +157,7 @@
                 <a href="#services" class="hover:text-blue-500 transition relative group nav-link">Capabilities<span class="absolute -bottom-2 left-0 w-0 h-[2px] bg-blue-500 transition-all group-hover:w-full"></span></a>
                 <a href="#pricing" class="hover:text-blue-500 transition relative group nav-link">Pricing<span class="absolute -bottom-2 left-0 w-0 h-[2px] bg-blue-500 transition-all group-hover:w-full"></span></a>
                 
-                <a href="#inquiry" class="px-8 py-3 bg-blue-600 rounded-full btn-premium text-white flex items-center gap-2 nav-link">
+                <a href="#inquiry" class="px-6 xl:px-8 py-3 bg-blue-600 rounded-full btn-premium text-white flex items-center gap-2 nav-link">
                     Free Strategy Call <i class="fa-solid fa-arrow-right text-[10px]"></i>
                 </a>
             </div>
@@ -432,10 +433,9 @@
                             <p class="text-neutral-400 text-sm md:text-lg leading-relaxed mb-6 md:mb-8">
                                 As a rapidly growing agency, nextAura is built on an Agile foundation. We realize exactly how much hassle standard template websites can be. We engineer clean systems from scratch that allow absolute custom features, robust architecture, and genuine Search Engine clarity. It's about crafting the best tech iteration of your ideas. We are right beside you for execution and continuous progression. Let’s launch it correctly.
                             </p>
-                            <!-- Styled English + Hindi Signature -->
-                            <div class="mt-4 md:mt-8 text-[2rem] md:text-[2.5rem] text-white opacity-80 font-normal tracking-wide flex items-baseline gap-3" style="font-family: 'Great Vibes', cursive;">
-                                <span>Aayan</span> 
-                                <span style="font-family: 'Inter', sans-serif; font-size: 0.6em; font-weight: 300; font-style: italic;" class="text-neutral-300">सिद्दीकी</span>
+                            <!-- Updated CEO Signature as exactly requested -->
+                            <div class="mt-4 md:mt-8 text-[2.5rem] md:text-[3.5rem] text-white opacity-80 font-normal tracking-wide" style="font-family: 'Great Vibes', cursive;">
+                                Aayaन सिद्दiqui
                             </div>
                         </div>
                     </div>
@@ -941,11 +941,30 @@
         servModal.addEventListener('click', xServ);
         smBox.addEventListener('click', e => e.stopPropagation());
 
-        // Toggle FAB and Nav Modals Manually 
+        // FIX: Toggle Mobile Nav safely retaining the Flex container alignments
         document.getElementById('mobile-toggle').addEventListener('click',()=>{
-            document.getElementById('mobile-menu').classList.toggle('hidden-el');
-            document.getElementById('mobile-menu').classList.toggle('visible-el');
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenu.classList.contains('hidden-el')) {
+                mobileMenu.classList.remove('hidden-el');
+                mobileMenu.classList.add('visible-flex'); // Uses flex logic instead of block
+            } else {
+                mobileMenu.classList.remove('visible-flex');
+                mobileMenu.classList.add('hidden-el');
+            }
         });
+        
+        // Hide mobile menu safely on link click
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', ()=> {
+                const mobileMenu = document.getElementById('mobile-menu');
+                if(mobileMenu.classList.contains('visible-flex')) {
+                    mobileMenu.classList.replace('visible-flex','hidden-el');
+                } else if(mobileMenu.classList.contains('visible-el')) {
+                    mobileMenu.classList.replace('visible-el','hidden-el');
+                }
+            });
+        });
+
         document.getElementById('fab-btn').addEventListener('click',function(){
             this.classList.toggle('rotate-45'); this.classList.toggle('bg-neutral-200');
             const mn = document.getElementById('fab-menu');
@@ -973,9 +992,6 @@
         };
         document.getElementById('back-btn').addEventListener('click',()=> {window.location.hash='';});
         window.addEventListener('hashchange', swViews);
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', ()=> document.getElementById('mobile-menu').classList.replace('visible-el','hidden-el') );
-        });
         swViews(); // Boot setup check run init route.
 
         // Magnetic Pure JS implementation (No Hooks) Replace Framer Drag

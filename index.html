@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
@@ -16,10 +17,10 @@
     <meta name="robots" content="index, follow, max-image-preview:large">
     <link rel="canonical" href="https://webhurt.tech/" />
     
-    <!-- Favicon Fixed -->
-    <link rel="icon" type="image/png" href="favicon.png">
-    <link rel="shortcut icon" href="favicon.png" type="image/png">
-    <link rel="apple-touch-icon" href="favicon.png">
+    <!-- Favicon Fixed (Now targeting fav.png properly) -->
+    <link rel="icon" type="image/png" href="fav.png">
+    <link rel="shortcut icon" href="fav.png" type="image/png">
+    <link rel="apple-touch-icon" href="fav.png">
     
     <!-- Open Graph for SEO and Social Media -->
     <meta property="og:type" content="website">
@@ -34,7 +35,7 @@
     
     <script type="application/ld+json">[{
       "@context": "https://schema.org","@type": "ProfessionalService","name": "webhurt","url": "https://webhurt.tech",
-      "logo": "https://webhurt.tech/favicon.png","description": "Development & Digital Marketing Agency.","telephone": "+919058327063","email": "hello@webhurt.tech",
+      "logo": "https://webhurt.tech/fav.png","description": "Development & Digital Marketing Agency.","telephone": "+919058327063","email": "hello@webhurt.tech",
       "address": { "@type": "PostalAddress", "addressCountry": "IN" },"priceRange": "$$$"
     }]</script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -447,6 +448,7 @@
 
         <!-- ════════════════════════════════════
              RECENT WORKS PORTFOLIO (Trust Section)
+             Grid mode reverted strictly back per request!
         ════════════════════════════════════ -->
         <section id="recent-works" class="py-24 md:py-32 px-6 bg-white reveal-element border-y border-slate-200">
             <div class="max-w-7xl mx-auto">
@@ -458,7 +460,10 @@
                     </div>
                     <a href="#inquiry" class="px-8 py-4 glass-card rounded-full font-black text-xs uppercase tracking-widest text-slate-900 hover:bg-slate-900 hover:text-white hover:border-slate-900 transition-all duration-300 w-full sm:w-auto text-center nav-link">Start Your Project</a>
                 </div>
+                
+                <!-- This original box Grid format structure returned unchanged exactly as before -->
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="cases-grid"></div>
+
             </div>
         </section>
 
@@ -760,7 +765,7 @@
 
         // ── DEVELOPMENT SERVICES
         const DEV_SERVICES =[
-            { title: "Web Development", icon: "fa-solid fa-globe", desc: "Blazing-fast React, Next.js & Vue applications with modern architecture and SEO-first approach.", tech: ["React", "Next.js", "Vue"], color: "#3b82f6", rgb: "59,130,246" },
+            { title: "Web Development", icon: "fa-solid fa-globe", desc: "Blazing-fast React, Next.js & Vue applications with modern architecture and SEO-first approach.", tech:["React", "Next.js", "Vue"], color: "#3b82f6", rgb: "59,130,246" },
             { title: "Custom Web Dev", icon: "fa-solid fa-code", desc: "Tailor-made web systems built from scratch to your exact specification — zero templates.", tech:["Laravel", "Django", "Node.js"], color: "#8b5cf6", rgb: "139,92,246" },
             { title: "E-Commerce Dev", icon: "fa-solid fa-cart-shopping", desc: "Full-featured online stores with payment integration, inventory management & order flows.", tech:["Shopify", "WooCommerce", "Custom"], color: "#10b981", rgb: "16,185,129" },
             { title: "Software Dev", icon: "fa-solid fa-laptop-code", desc: "Enterprise SaaS, CRM, ERP and internal tools engineered for scale and performance.", tech:["SaaS", "CRM", "ERP"], color: "#f59e0b", rgb: "245,158,11" },
@@ -782,14 +787,62 @@
             { title: "Social Media Mgmt", icon: "fa-solid fa-share-nodes", desc: "Full-service social presence management across all platforms with consistent brand voice.", metrics:[{ label: "Followers", val: "10K+" }, { label: "Eng Rate", val: "15%" }], color: "#06b6d4", rgb: "6,182,212", tags:["Posting", "Strategy", "Analytics"] }
         ];
 
-        // ── RECENT WORKS / PORTFOLIO
+        // ── RECENT WORKS / PORTFOLIO (WITH NEW REAL PROJECT DATA & LINKS ADDED)
         const CASE_STUDIES_DATA =[
-            { title: "Custom E-Commerce Build", result: "300+ Orders in Month 1", desc: "Built a lightweight, conversion-optimized storefront for a growing D2C apparel startup. Clean UI, safe gateway, and smooth checkout experience.", img: "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?auto=format&fit=crop&w=800&q=80", tag: "E-Commerce" },
-            { title: "Google/Meta Ads Setup", result: "2.1x Consistent ROAS", desc: "Targeted ad structures optimized for a local service business. Efficient creatives delivering high-intent daily inbound leads on limited spending.", img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80", tag: "Performance Ads" },
-            { title: "Organic SEO & Auditing", result: "Ranked 5 Key Services", desc: "Content strategy & core web vital fixes for a service website, resulting in a slow but steady traffic climb toward Google's first page organically.", img: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&w=800&q=80", tag: "SEO Ranking" },
-            { title: "Email Automations", result: "22% Average Open Rate", desc: "Designed robust email sequences reclaiming abandoned carts and actively nurturing fresh organic leads effectively for a niche ed-tech group.", img: "https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=800&q=80", tag: "Email Marketing" },
-            { title: "Interactive Game Deployment", result: "40% Higher Dwell Time", desc: "Built an engaging web-based mini-game helping a brand campaign secure higher interaction levels safely integrated directly to standard layouts.", img: "https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80", tag: "Game Dev" },
-            { title: "Sales SaaS Tool Integration", result: "Saved 12 Hours / Week", desc: "Simplified complex data entry loops via secure React portal ensuring easy internal logistics tracking. Reliable architecture engineered clearly.", img: "https://images.unsplash.com/photo-1531403009284-440f080d1e12?auto=format&fit=crop&w=800&q=80", tag: "Software Dev" }
+            { 
+                title: "CodeBypass SaaS Portal", 
+                result: "Robust API Setup", 
+                desc: "Engineered CodeBypass: a fully automated SaaS providing USA non-VoIP numbers for SMS verifications. Custom-built API structure and instant delivery logic.", 
+                img: "pro1.jpg", 
+                tag: "Web App Dev", 
+                link: "https://codebypass.com", 
+                linkText: "View CodeBypass" 
+            },
+            { 
+                title: "Business & B2B Setup", 
+                result: "Maximized Networking", 
+                desc: "Crafted a lightning-fast premium business networking portal perfectly engineered for conversion logic and massive audience scalability.", 
+                img: "pro2.jpg", 
+                tag: "Custom Web Dev", 
+                link: "https://lnkd.in/g663bph2", 
+                linkText: "View Live Post" 
+            },
+            { 
+                title: "Indie Web-Game Build", 
+                result: "Fluid 60 FPS in Browser", 
+                desc: "Created lightweight 3D web-based endless gaming loop ensuring high-retention mechanics completely runnable inside standard desktop browsers natively.", 
+                img: "https://images.unsplash.com/photo-1620288627223-53302f4e8c74?auto=format&fit=crop&w=800&q=80", 
+                tag: "Game Dev", 
+                link: "https://slowroads.io", 
+                linkText: "Play Now" 
+            },
+            { 
+                title: "Google/Meta Ads Setup", 
+                result: "2.1x Consistent ROAS", 
+                desc: "Targeted ad structures optimized for a local service business. Efficient creatives delivering high-intent daily inbound leads on limited spending.", 
+                img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80", 
+                tag: "Performance Ads", 
+                link: "#inquiry", 
+                linkText: "Discuss Project" 
+            },
+            { 
+                title: "Organic SEO & Auditing", 
+                result: "Ranked 5 Key Services", 
+                desc: "Content strategy & core web vital fixes for a service website, resulting in a slow but steady traffic climb toward Google's first page organically.", 
+                img: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&w=800&q=80", 
+                tag: "SEO Ranking", 
+                link: "#inquiry", 
+                linkText: "Discuss Project" 
+            },
+            { 
+                title: "Email Automations", 
+                result: "22% Average Open Rate", 
+                desc: "Designed robust email sequences reclaiming abandoned carts and actively nurturing fresh organic leads effectively for a niche ed-tech group.", 
+                img: "https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=800&q=80", 
+                tag: "Email Marketing", 
+                link: "#inquiry", 
+                linkText: "Discuss Project" 
+            }
         ];
 
         const TESTIMONIALS_DATA =[
@@ -928,12 +981,12 @@
         });
 
         // ══════════════════════════════
-        //  RENDER: RECENT WORKS (PORTFOLIO)
+        //  RENDER: RECENT WORKS (PORTFOLIO) - REVERTED TO ORIGINAL GRID STYLE EXACTLY!
         // ══════════════════════════════
         document.getElementById('cases-grid').innerHTML = CASE_STUDIES_DATA.map((c) => `
             <div class="bg-white border border-slate-200 shadow-sm rounded-[32px] md:rounded-[40px] overflow-hidden group reveal-element shine-card flex flex-col h-full">
                 <div class="h-56 md:h-64 overflow-hidden relative border-b border-slate-200">
-                    <img src="${c.img}" loading="lazy" alt="${c.title}" class="w-full h-full object-cover relative z-10 opacity-90 group-hover:scale-110 transition duration-1000 object-center">
+                    <img src="${c.img}" loading="lazy" alt="${c.title}" onerror="this.src='https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80'" class="w-full h-full object-cover relative z-10 opacity-90 group-hover:scale-110 transition duration-1000 object-center">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent z-10"></div>
                     <div class="absolute top-4 left-4 px-3 py-1.5 bg-blue-600/90 backdrop-blur-md rounded-full text-[9px] md:text-[10px] font-black uppercase tracking-widest text-white z-20 shadow-lg">${c.tag}</div>
                 </div>
@@ -941,7 +994,7 @@
                     <div class="mb-4 inline-block text-green-600 font-bold text-xs bg-green-50 border border-green-100 px-3 py-1 rounded-full w-fit"><i class="fa-solid fa-chart-line mr-1"></i> Result: ${c.result}</div>
                     <h3 class="text-2xl md:text-3xl font-black mb-3 md:mb-4 font-syne text-slate-900 leading-tight">${c.title}</h3>
                     <p class="text-slate-600 text-sm md:text-base mb-6 md:mb-8 leading-relaxed flex-grow">${c.desc}</p>
-                    <a href="#inquiry" class="inline-flex items-center gap-3 text-blue-600 font-black text-xs uppercase tracking-widest group/btn bg-blue-50 border border-blue-100 px-5 py-3 rounded-full hover:bg-blue-600 hover:text-white transition nav-link w-fit">Discuss Project <i class="fa-solid fa-arrow-right transition-transform"></i></a>
+                    <a href="${c.link || '#inquiry'}" ${c.link && c.link.startsWith('http') ? 'target="_blank" rel="noopener noreferrer"' : ''} class="inline-flex items-center gap-3 text-blue-600 font-black text-xs uppercase tracking-widest group/btn bg-blue-50 border border-blue-100 px-5 py-3 rounded-full hover:bg-blue-600 hover:text-white transition nav-link w-fit">${c.linkText || 'Discuss Project'} <i class="fa-solid ${c.link && c.link.startsWith('http') ? 'fa-arrow-up-right-from-square' : 'fa-arrow-right'} transition-transform"></i></a>
                 </div>
             </div>
         `).join('');
